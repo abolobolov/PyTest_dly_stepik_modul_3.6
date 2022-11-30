@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
 import pytest
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-def test_button_korzina(browser):
+import time
+def test_should_be_button_add_to_cart(browser):
     browser.get("http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/")
-    browser.implicitly_wait(5)
-    assert browser.find_element_by_class_name('btn-add-to-basket').is_displayed(), \
+    time.sleep(30)
+    button_add_to_cart = browser.find_element(By.XPATH, '//form[@id = "add_to_basket_form"]//button')
+    assert browser.find_element(By.XPATH, '//form[@id = "add_to_basket_form"]//button').is_enabled(), \
         'Кнопка добавления товара в корзину отсутсвует'
